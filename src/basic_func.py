@@ -17,7 +17,9 @@ def get_setting(keys: list[str]) -> Any:
     import yaml
     from define import SETTING_FILE
 
-    with open(SETTING_FILE, "r", encoding="utf-8") as f:
+    parrent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    setting_file = os.path.join(parrent_dir, SETTING_FILE)
+    with open(setting_file, "r", encoding="utf-8") as f:
         setting = yaml.safe_load(f)
 
         for k in keys:
