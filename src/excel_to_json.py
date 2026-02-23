@@ -17,8 +17,8 @@ from data_structure_cell import CellData
 class ExcelToJson:
     def __init__(self) -> None:
         LOGGER.info(f"開始します")
-        LOGGER.debug(f"Excelファイル格納ディレクトリ: {FULLPATH_ORIGINAL_EXCEL}")
-        LOGGER.debug(f"JSONファイル格納ディレクトリ: {FULLPATH_INTERMEDIATE_JSON}")
+        LOGGER.info(f"Excelファイル格納ディレクトリ: {FULLPATH_ORIGINAL_EXCEL}")
+        LOGGER.info(f"JSONファイル格納ディレクトリ: {FULLPATH_INTERMEDIATE_JSON}")
 
         # JSONファイル格納ディレクトリを作成
         create_dir(FULLPATH_INTERMEDIATE_JSON)
