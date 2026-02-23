@@ -1,0 +1,5 @@
+full_path:
+  original_excel: "D:/prj/excel_serch/_sample_excel"
+  intermediate_json: "D:/prj/excel_serch/_temp"
+excel_extensions: [".xlsx",".xlsm"]
+log_level: "DEBUG" # DEBUG, INFO
