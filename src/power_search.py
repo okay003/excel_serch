@@ -164,5 +164,7 @@ if __name__ == "__main__":
     search_word = get_setting(["search", "snake_case_word"])
     cell_data_list = PowerSearch(search_mode, search_word).search()
 
-    for cell_data in cell_data_list:
-        pprint(cell_data.to_dict())
+    does_print_result = get_setting(["search", "does_print_result"])
+    if does_print_result:
+        for cell_data in cell_data_list:
+            pprint(cell_data.to_dict())

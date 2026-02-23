@@ -10,8 +10,9 @@ search:
   # 検索モード
   mode: "text" # 指定できる値: text, text_color, fill_color, is_strike
   # 検索正規表現(スネークケースで指定すること)
-  snake_case_word: ".+は.+である。"
-  # snake_case_word: "system_security_monitor.+"
+  snake_case_word: ".+は.+である。" # "system_security_monitor.+"
+  # 検索結果をターミナルに表示するかどうか
+  does_print_result: false # 指定できる値: true, false
 
 # 検索対象とするエクセルファイルの拡張子
 excel_extensions: [".xlsx",".xlsm"]

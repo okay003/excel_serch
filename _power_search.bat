@@ -1,0 +1,1 @@
+python ./src/power_search.py
