@@ -2,7 +2,7 @@
 # import
 # --------------------------------------------------
 import openpyxl
-from pathlib import Path
+import os
 import json
 
 from logger import LOGGER
@@ -37,15 +37,16 @@ class ExcelToJson:
         """
         LOGGER.info(f"処理します: {excel_path}")
 
-        result = {}
+        result: list[dict[str, str | bool]] = []
 
         # Excelファイルを読み込む
         wb = openpyxl.load_workbook(excel_path, data_only=False)
+        book_name = os.path.basename(excel_path)
+        book_name_without_extension = os.path.splitext(book_name)[0]
 
         # 全シートを舐める
         for sheet in wb.sheetnames:
             ws = wb[sheet]
-            sheet_data = []
             # 全行を舐める
             for row in ws.iter_rows():
                 # 全セルを舐める
@@ -54,16 +55,14 @@ class ExcelToJson:
                     if cell.value is None:
                         continue
                     # セルデータ抽出
-                    cell_data = CellData(cell)
+                    cell_data = CellData(book_name, sheet, cell)
                     cell_data_dict = cell_data.to_dict()
                     LOGGER.debug(f"セルデータ: {cell_data_dict}")
                     # セルデータ格納
-                    sheet_data.append(cell_data_dict)
-
-            result[sheet] = sheet_data
+                    result.append(cell_data_dict)
 
         # JSON保存
-        output_file_path = f"{FULLPATH_INTERMEDIATE_JSON}/{Path(excel_path).stem}.json"
+        output_file_path = f"{FULLPATH_INTERMEDIATE_JSON}/{book_name_without_extension}.json"
         with open(output_file_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=4)
 

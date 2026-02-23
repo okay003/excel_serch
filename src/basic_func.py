@@ -17,7 +17,7 @@ def get_setting(keys: list[str]) -> Any:
     import yaml
     from define import SETTING_FILE
 
-    with open(SETTING_FILE, "r") as f:
+    with open(SETTING_FILE, "r", encoding="utf-8") as f:
         setting = yaml.safe_load(f)
 
         for k in keys:
